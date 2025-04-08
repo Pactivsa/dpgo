@@ -180,6 +180,16 @@
    lock_guard<mutex> mLock(mMeasurementsMutex);
    mPoseGraph->addMeasurement(factor);
  }
+
+ void PGOAgent::addUWBMeasurement(const RelativeSEMeasurement &factor) {
+   if (mState != PGOAgentState::WAIT_FOR_DATA) {
+     LOG(WARNING)
+         << "Robot state is not WAIT_FOR_DATA. Ignore new measurements!";
+     return;
+   }
+   lock_guard<mutex> mLock(mMeasurementsMutex);
+   mPoseGraph->addUWBMeasurement(factor);
+ }
  
  void PGOAgent::setMeasurements(
      const std::vector<RelativeSEMeasurement> &inputOdometry,

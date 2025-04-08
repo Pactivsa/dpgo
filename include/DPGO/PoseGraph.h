@@ -115,6 +115,11 @@
     * @param m
     */
    void addMeasurement(const RelativeSEMeasurement &m);
+    /** 
+    * @brief 添加uwb约束边 如果输入测量已经存在则忽略
+    * @param factor
+    */
+   void addUWBMeasurement(const RelativeSEMeasurement &factor);
    /**
     * @brief Return a copy of the list of odometry edges
     * @return
@@ -391,11 +396,7 @@
     * @param factor
     */
    void addSharedLoopClosure(const RelativeSEMeasurement &factor);
-   /**
-    * @brief 添加uwb约束边 如果输入测量已经存在则忽略
-    * @param factor
-    */
-   void addUWBMeasurement(const RelativeSEMeasurement &factor);
+
    /**
     * @brief Construct the quadratic cost matrix
     * @return
